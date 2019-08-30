@@ -12,10 +12,16 @@ class ListViewController: UITableViewController {
 
     var itemArray = ["Bananas", "Apples", "Binbags"]
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+        
+        if let items = defaults.array(forKey: "ItemListArray") as? [String] {
+            itemArray = items
+        }
+        
+        }
 
     //MARK - TableView DataSource Methods
     
@@ -57,8 +63,12 @@ class ListViewController: UITableViewController {
         let alert = UIAlertController(title: "Add new item", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+            
             //what will happen once the user clicks the Add Item button on the UI Alert
+            
             self.itemArray.append(textField.text!)
+            
+            self.defaults.set(self.itemArray, forKey : "ItemListArray")
             
             self.tableView.reloadData()
             
