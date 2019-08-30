@@ -10,7 +10,7 @@ import UIKit
 
 class ListViewController: UITableViewController {
 
-    let itemArray = ["Bananas", "Apples", "Binbags"]
+    var itemArray = ["Bananas", "Apples", "Binbags"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,32 @@ class ListViewController: UITableViewController {
         
     }
     
+    //MARK - Add new Items
+    
+    @IBAction func addItemPressed(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add new item", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+            //what will happen once the user clicks the Add Item button on the UI Alert
+            self.itemArray.append(textField.text!)
+            
+            self.tableView.reloadData()
+            
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Add New Item"
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
     
 
 }

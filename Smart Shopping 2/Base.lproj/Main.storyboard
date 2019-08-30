@@ -32,7 +32,14 @@
                             <outlet property="delegate" destination="I2B-JZ-1JS" id="S3k-jG-ShA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Smart Shopping" id="1ao-e7-FzG"/>
+                    <navigationItem key="navigationItem" title="Smart Shopping" id="1ao-e7-FzG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bav-5E-nME">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="addItemPressed:" destination="I2B-JZ-1JS" id="eZ6-iQ-frE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vMS-pR-kyJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
