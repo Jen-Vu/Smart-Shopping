@@ -12,6 +12,7 @@
 		83F2F8F72319377500ACE6D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F2F8F52319377500ACE6D8 /* Main.storyboard */; };
 		83F2F8F92319377900ACE6D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83F2F8F82319377900ACE6D8 /* Assets.xcassets */; };
 		83F2F8FC2319377900ACE6D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F2F8FA2319377900ACE6D8 /* LaunchScreen.storyboard */; };
+		83F2F90423194B7E00ACE6D8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2F90323194B7E00ACE6D8 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		83F2F8F82319377900ACE6D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83F2F8FB2319377900ACE6D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83F2F8FD2319377900ACE6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83F2F90323194B7E00ACE6D8 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +57,46 @@
 			isa = PBXGroup;
 			children = (
 				83F2F8F12319377500ACE6D8 /* AppDelegate.swift */,
-				83F2F8F32319377500ACE6D8 /* ListViewController.swift */,
-				83F2F8F52319377500ACE6D8 /* Main.storyboard */,
-				83F2F8F82319377900ACE6D8 /* Assets.xcassets */,
-				83F2F8FA2319377900ACE6D8 /* LaunchScreen.storyboard */,
+				83F2F90523194B8700ACE6D8 /* Data Model */,
+				83F2F90723194B9A00ACE6D8 /* Views */,
+				83F2F90623194B9300ACE6D8 /* Controllers */,
+				83F2F90823194BA600ACE6D8 /* Supporting Files */,
 				83F2F8FD2319377900ACE6D8 /* Info.plist */,
 			);
 			path = "Smart Shopping 2";
+			sourceTree = "<group>";
+		};
+		83F2F90523194B8700ACE6D8 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				83F2F90323194B7E00ACE6D8 /* Item.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		83F2F90623194B9300ACE6D8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				83F2F8F32319377500ACE6D8 /* ListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		83F2F90723194B9A00ACE6D8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83F2F8F52319377500ACE6D8 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		83F2F90823194BA600ACE6D8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				83F2F8F82319377900ACE6D8 /* Assets.xcassets */,
+				83F2F8FA2319377900ACE6D8 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F2F8F42319377500ACE6D8 /* ListViewController.swift in Sources */,
+				83F2F90423194B7E00ACE6D8 /* Item.swift in Sources */,
 				83F2F8F22319377500ACE6D8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
