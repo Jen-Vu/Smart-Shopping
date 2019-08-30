@@ -12,18 +12,14 @@ class ListViewController: UITableViewController {
 
     var itemArray = [Item]()
     
-    let defaults = UserDefaults.standard
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let newItem = Item()
-        newItem.title = "Bananas"
-        itemArray.append(newItem)
-        
-        if let items = defaults.array(forKey: "ItemListArray") as? [Item] {
-            itemArray = items
-        }
+        print(dataFilePath)
+    
+        loadItems()
         
         }
 
@@ -53,7 +49,7 @@ class ListViewController: UITableViewController {
         
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
-        tableView.reloadData()
+        saveItems()
         
         tableView.deselectRow(at: indexPath, animated : true)
         
@@ -76,9 +72,7 @@ class ListViewController: UITableViewController {
             
             self.itemArray.append(newItem)
             
-            self.defaults.set(self.itemArray, forKey : "ItemListArray")
-            
-            self.tableView.reloadData()
+            self.saveItems()
             
         }
         
@@ -92,7 +86,33 @@ class ListViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
         
     }
+    //MARK - Model manipulation methods
     
+    func saveItems() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(itemArray)
+            try data.write(to : dataFilePath!)
+        }
+        catch {
+            print("Error encoding Item Array, \(error)")
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func loadItems() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+            itemArray = try decoder.decode([Item].self, from: data)
+            }
+            catch {
+             print("Error decoding item, \(error)")
+            }
+        }
+    }
 
 }
 
