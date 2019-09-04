@@ -20,7 +20,9 @@ class ListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-//        loadItems()
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        loadItems()
         
         }
 
@@ -103,17 +105,15 @@ class ListViewController: UITableViewController {
         tableView.reloadData()
     }
     
-//    func loadItems() {
-//        if let data = try? Data(contentsOf: dataFilePath!) {
-//            let decoder = PropertyListDecoder()
-//            do {
-//            itemArray = try decoder.decode([Item].self, from: data)
-//            }
-//            catch {
-//             print("Error decoding item, \(error)")
-//            }
-//        }
-//    }
+    func loadItems() {
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            itemArray = try context.fetch(request)
+        }
+        catch {
+            print("error fetching data from context \(error)")
+        }
+    }
 
 }
 
