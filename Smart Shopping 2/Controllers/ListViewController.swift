@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ListViewController: UITableViewController {
+class ListViewController: SwipeTableViewController {
 
     var allItems : Results<Item>?
     
@@ -30,7 +30,7 @@ class ListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let item = allItems?[indexPath.row] {
             cell.textLabel?.text = item.title
@@ -107,6 +107,19 @@ class ListViewController: UITableViewController {
         
         tableView.reloadData()
         
+    }
+    
+    override func updateModel(at indexPath : IndexPath) {
+        if let itemForDeletion = self.allItems?[indexPath.row] {
+            
+            do {
+                try self.realm.write {
+                    self.realm.delete(itemForDeletion)
+                }
+            } catch {
+                print("Error deleting meal, \(error)")
+            }
+        }
     }
 }
     //MARK: - Search Bar Methods

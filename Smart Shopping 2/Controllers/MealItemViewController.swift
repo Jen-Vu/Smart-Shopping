@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class MealItemViewController: UITableViewController {
+class MealItemViewController: SwipeTableViewController {
     
     var mealItems : Results<Item>?
     
@@ -36,7 +36,7 @@ class MealItemViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let item = mealItems?[indexPath.row] {
             cell.textLabel?.text = item.title
@@ -112,6 +112,21 @@ class MealItemViewController: UITableViewController {
 
         tableView.reloadData()
     }
+    
+    override func updateModel(at indexPath : IndexPath) {
+        if let itemForDeletion = self.mealItems?[indexPath.row] {
+            
+            do {
+                try self.realm.write {
+                    self.realm.delete(itemForDeletion)
+                }
+            } catch {
+                print("Error deleting meal, \(error)")
+            }
+        }
+    }
+    
+    
 
 
 }

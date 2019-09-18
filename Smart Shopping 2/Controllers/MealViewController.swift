@@ -8,8 +8,9 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
-class MealViewController: UITableViewController {
+class MealViewController: SwipeTableViewController {
     
     var meals : Results<Meal>?
     
@@ -19,6 +20,10 @@ class MealViewController: UITableViewController {
         super.viewDidLoad()
         
         loadMeals()
+        
+        tableView.rowHeight = 80.0
+        
+        tableView.separatorStyle = .none
 
     }
     
@@ -28,12 +33,15 @@ class MealViewController: UITableViewController {
         
         return meals?.count ?? 1
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MealCell", for: indexPath)
-        
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+    
         cell.textLabel?.text = meals?[indexPath.row].name ?? "No Meals Added Yet"
+        
+        cell.backgroundColor = UIColor.randomFlat
         
         return cell
     }
@@ -56,6 +64,21 @@ class MealViewController: UITableViewController {
         meals = realm.objects(Meal.self)
         
         tableView.reloadData()
+    }
+    
+    //MARK - Delete Data from Swipe
+    
+    override func updateModel(at indexPath : IndexPath) {
+            if let mealForDeletion = self.meals?[indexPath.row] {
+
+                do {
+                    try self.realm.write {
+                        self.realm.delete(mealForDeletion)
+                    }
+                } catch {
+                    print("Error deleting meal, \(error)")
+                }
+            }
     }
 
    
@@ -125,3 +148,4 @@ extension MealViewController: UISearchBarDelegate {
     }
     
 }
+

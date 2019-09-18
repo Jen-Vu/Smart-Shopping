@@ -8,7 +8,6 @@
 
 import Foundation
 import RealmSwift
-import CoreData
 
 class Meal: Object {
     @objc dynamic var name : String = ""

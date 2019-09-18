@@ -17,6 +17,7 @@
 		E17BCBCA232F7E7D00A6ACE9 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BCBC9232F7E7D00A6ACE9 /* Meal.swift */; };
 		E17BCBCE232FCEB200A6ACE9 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BCBCD232FCEB200A6ACE9 /* MealViewController.swift */; };
 		E17BCBD0232FDB4400A6ACE9 /* MealItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BCBCF232FDB4400A6ACE9 /* MealItemViewController.swift */; };
+		E17BCBD2233243D800A6ACE9 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BCBD1233243D800A6ACE9 /* SwipeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		E17BCBC9232F7E7D00A6ACE9 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		E17BCBCD232FCEB200A6ACE9 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		E17BCBCF232FDB4400A6ACE9 /* MealItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealItemViewController.swift; sourceTree = "<group>"; };
+		E17BCBD1233243D800A6ACE9 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +102,10 @@
 		83F2F90623194B9300ACE6D8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E17BCBD1233243D800A6ACE9 /* SwipeTableViewController.swift */,
 				E17BCBCD232FCEB200A6ACE9 /* MealViewController.swift */,
-				83F2F8F32319377500ACE6D8 /* ListViewController.swift */,
 				E17BCBCF232FDB4400A6ACE9 /* MealItemViewController.swift */,
+				83F2F8F32319377500ACE6D8 /* ListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				E17BCBC8232F7E6F00A6ACE9 /* Item.swift in Sources */,
 				E17BCBCE232FCEB200A6ACE9 /* MealViewController.swift in Sources */,
 				E17BCBCA232F7E7D00A6ACE9 /* Meal.swift in Sources */,
+				E17BCBD2233243D800A6ACE9 /* SwipeTableViewController.swift in Sources */,
 				83F2F8F42319377500ACE6D8 /* ListViewController.swift in Sources */,
 				E17BCBD0232FDB4400A6ACE9 /* MealItemViewController.swift in Sources */,
 				83F2F8F22319377500ACE6D8 /* AppDelegate.swift in Sources */,
