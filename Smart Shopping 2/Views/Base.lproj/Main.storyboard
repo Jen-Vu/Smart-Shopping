@@ -101,7 +101,7 @@
         <!--Smart Shopping-->
         <scene sceneID="057-fx-Iyo">
             <objects>
-                <tableViewController id="YIp-BS-Pjc" customClass="ListViewController" customModule="Smart_Shopping_2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="YIp-BS-Pjc" customClass="MealViewController" customModule="Smart_Shopping_2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Jx-b2-gL0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,7 +115,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListItemCell" id="zVx-DB-m3W">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealCell" id="zVx-DB-m3W">
                                 <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zVx-DB-m3W" id="1ZT-lP-oNn">
@@ -133,20 +133,23 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hxn-Mb-ybm">
                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
-                                <action selector="addItemPressed:" destination="YIp-BS-Pjc" id="1Dh-Tl-OjR"/>
+                                <action selector="addButtonPressed:" destination="YIp-BS-Pjc" id="KYe-gK-4vY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="q3Q-Ke-fEM" kind="show" identifier="goToItems" id="nG6-x6-H0I"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uXU-qS-LlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1823" y="-565"/>
         </scene>
-        <!--Staples-->
+        <!--Meals-->
         <scene sceneID="Kwp-Qf-6aD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aJf-W3-SB6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Staples" id="EPp-eF-ieP">
+                    <tabBarItem key="tabBarItem" title="Meals" id="EPp-eF-ieP">
                         <color key="badgeColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -163,6 +166,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="03R-s2-cOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="913" y="-565"/>
+        </scene>
+        <!--Smart Shopping-->
+        <scene sceneID="8v4-Su-PYo">
+            <objects>
+                <tableViewController id="q3Q-Ke-fEM" customClass="MealItemViewController" customModule="Smart_Shopping_2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gAY-je-nSn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="YFg-xj-gk8">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="q3Q-Ke-fEM" id="W6z-su-3Ho"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListItemCell" id="X2i-ZT-T4s">
+                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X2i-ZT-T4s" id="Ygi-zF-4bw">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="q3Q-Ke-fEM" id="4lM-A6-OJ9"/>
+                            <outlet property="delegate" destination="q3Q-Ke-fEM" id="F2q-Xm-JUx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Smart Shopping" id="GpX-Ud-UUN">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3z5-nI-YVj">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="addItemPressed:" destination="q3Q-Ke-fEM" id="Lv5-KF-uiE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oZ0-Lr-XDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2625" y="-565"/>
         </scene>
     </scenes>
 </document>
