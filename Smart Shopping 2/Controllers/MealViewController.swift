@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import CoreData
 import RealmSwift
 
 class MealViewController: UITableViewController {
-
-    let realm = try! Realm()
     
     var meals : Results<Meal>?
+    
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,5 +100,28 @@ class MealViewController: UITableViewController {
         }
     }
     
+}
+
+//MARK: - Search Bar Methods
+
+extension MealViewController: UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+
+        meals = meals?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+
+        tableView.reloadData()
+
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadMeals()
+
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
     
 }
