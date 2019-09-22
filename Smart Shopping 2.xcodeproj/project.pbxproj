@@ -18,6 +18,8 @@
 		E17BCBCE232FCEB200A6ACE9 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BCBCD232FCEB200A6ACE9 /* MealViewController.swift */; };
 		E17BCBD0232FDB4400A6ACE9 /* MealItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BCBCF232FDB4400A6ACE9 /* MealItemViewController.swift */; };
 		E17BCBD2233243D800A6ACE9 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BCBD1233243D800A6ACE9 /* SwipeTableViewController.swift */; };
+		E17BCBDA2335FC1100A6ACE9 /* CustomItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BCBD82335FC1100A6ACE9 /* CustomItemCell.swift */; };
+		E17BCBDB2335FC1100A6ACE9 /* CustomItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17BCBD92335FC1100A6ACE9 /* CustomItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		E17BCBCD232FCEB200A6ACE9 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		E17BCBCF232FDB4400A6ACE9 /* MealItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealItemViewController.swift; sourceTree = "<group>"; };
 		E17BCBD1233243D800A6ACE9 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
+		E17BCBD82335FC1100A6ACE9 /* CustomItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemCell.swift; sourceTree = "<group>"; };
+		E17BCBD92335FC1100A6ACE9 /* CustomItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 		83F2F90723194B9A00ACE6D8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E17BCBD72335FAFD00A6ACE9 /* Custom Cell */,
 				83F2F8F52319377500ACE6D8 /* Main.storyboard */,
 			);
 			path = Views;
@@ -125,6 +130,15 @@
 				83F2F8FA2319377900ACE6D8 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E17BCBD72335FAFD00A6ACE9 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E17BCBD82335FC1100A6ACE9 /* CustomItemCell.swift */,
+				E17BCBD92335FC1100A6ACE9 /* CustomItemCell.xib */,
+			);
+			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
 		F8191B046EB79E53CCF7A87C /* Frameworks */ = {
@@ -196,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F2F8FC2319377900ACE6D8 /* LaunchScreen.storyboard in Resources */,
+				E17BCBDB2335FC1100A6ACE9 /* CustomItemCell.xib in Resources */,
 				83F2F8F92319377900ACE6D8 /* Assets.xcassets in Resources */,
 				83F2F8F72319377500ACE6D8 /* Main.storyboard in Resources */,
 			);
@@ -251,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E17BCBC8232F7E6F00A6ACE9 /* Item.swift in Sources */,
+				E17BCBDA2335FC1100A6ACE9 /* CustomItemCell.swift in Sources */,
 				E17BCBCE232FCEB200A6ACE9 /* MealViewController.swift in Sources */,
 				E17BCBCA232F7E7D00A6ACE9 /* Meal.swift in Sources */,
 				E17BCBD2233243D800A6ACE9 /* SwipeTableViewController.swift in Sources */,

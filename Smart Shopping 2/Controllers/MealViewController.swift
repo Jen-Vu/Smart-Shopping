@@ -20,11 +20,7 @@ class MealViewController: SwipeTableViewController {
         super.viewDidLoad()
         
         loadMeals()
-        
-        tableView.rowHeight = 80.0
-        
-        tableView.separatorStyle = .none
-
+                
     }
     
     //MARK: - TableView Data Source Methods
@@ -35,13 +31,11 @@ class MealViewController: SwipeTableViewController {
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> CustomItemCell {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
     
         cell.textLabel?.text = meals?[indexPath.row].name ?? "No Meals Added Yet"
-        
-        cell.backgroundColor = UIColor.randomFlat
         
         return cell
     }
@@ -68,7 +62,7 @@ class MealViewController: SwipeTableViewController {
     
     //MARK - Delete Data from Swipe
     
-    override func updateModel(at indexPath : IndexPath) {
+    override func deleteItem(at indexPath : IndexPath) {
             if let mealForDeletion = self.meals?[indexPath.row] {
 
                 do {

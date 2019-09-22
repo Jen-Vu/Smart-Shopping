@@ -34,7 +34,7 @@ class MealItemViewController: SwipeTableViewController {
         return mealItems?.count ?? 1
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> CustomItemCell {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
@@ -84,6 +84,7 @@ class MealItemViewController: SwipeTableViewController {
                 try self.realm.write {
                     let newItem = Item()
                     newItem.title = textField.text!
+                    newItem.meal = true
                     currentMeal.items.append(newItem)
                 }
                 } catch {
@@ -113,7 +114,7 @@ class MealItemViewController: SwipeTableViewController {
         tableView.reloadData()
     }
     
-    override func updateModel(at indexPath : IndexPath) {
+    override func deleteItem(at indexPath : IndexPath) {
         if let itemForDeletion = self.mealItems?[indexPath.row] {
             
             do {

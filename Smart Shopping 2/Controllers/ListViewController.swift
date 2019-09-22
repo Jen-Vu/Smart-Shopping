@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
 class ListViewController: SwipeTableViewController {
 
@@ -18,6 +19,7 @@ class ListViewController: SwipeTableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         loadItems()
         
     }
@@ -28,12 +30,27 @@ class ListViewController: SwipeTableViewController {
         return allItems?.count ?? 1
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> CustomItemCell {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
+//        let cell = super.tableView.dequeueReusableCell(withIdentifier: "customItemCell", for: indexPath) as! CustomItemCell
+        
         if let item = allItems?[indexPath.row] {
-            cell.textLabel?.text = item.title
+            cell.itemName?.text = item.title
+            
+            if item.meal == true {
+                cell.itemType?.text = "Meal"
+                cell.itemType.backgroundColor = .flatMagenta
+            }
+            if item.newlyAddedItem == true {
+                cell.itemType?.text = "New"
+                cell.itemType.backgroundColor = .flatGreen
+            }
+            if item.staple == true {
+                cell.itemType?.text = "Staple"
+                cell.itemType.backgroundColor = .flatOrange
+            }
             
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
@@ -56,12 +73,54 @@ class ListViewController: SwipeTableViewController {
                 print("error toggling done status, \(error)")
             }
 
-        tableView.deselectRow(at: indexPath, animated : true)
+        tableView.deselectRow(at: indexPath, animated : false)
             
         tableView.reloadData()
     }
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        let item = allItems?[indexPath.row]
+        
+        if item?.meal == false {
+            
+        if orientation == .right {
+            
+            let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+                // handle action by updating model with deletion
+                
+                print("Delete Cell")
+                
+                self.deleteItem(at: indexPath)
+                
+            }
+            
+            // customize the action appearance
+            deleteAction.image = UIImage(named: "delete-icon")
+            
+            return [deleteAction]
+        }
+        else {
+            let stapleAction = SwipeAction(style: .default, title: "Staple") { action, indexPath in
+                // handle action by updating model with deletion
+                
+                print("Make Staple")
+                
+                self.makeStaple(at: indexPath)
+                
+            }
+            
+            // customize the action appearance
+            stapleAction.image = UIImage(named: "delete-icon")
+            stapleAction.backgroundColor = UIColor.flatOrange
+            return [stapleAction]
+        }
+    }
+    else {
+    return nil
+    }
+    }
     //MARK - Add new Items
     
     @IBAction func addItemPressed(_ sender: UIBarButtonItem) {
@@ -80,6 +139,7 @@ class ListViewController: SwipeTableViewController {
             try self.realm.write {
                 let newItem = Item()
                 newItem.title = textField.text!
+                newItem.newlyAddedItem = true
                 self.realm.add(newItem)
                 }
         } catch {
@@ -106,10 +166,10 @@ class ListViewController: SwipeTableViewController {
         allItems = realm.objects(Item.self).sorted(byKeyPath: "title", ascending: true)
         
         tableView.reloadData()
-        
+    
     }
     
-    override func updateModel(at indexPath : IndexPath) {
+    override func deleteItem(at indexPath : IndexPath) {
         if let itemForDeletion = self.allItems?[indexPath.row] {
             
             do {
@@ -118,6 +178,20 @@ class ListViewController: SwipeTableViewController {
                 }
             } catch {
                 print("Error deleting meal, \(error)")
+            }
+        }
+    }
+    
+    override func makeStaple(at indexPath : IndexPath) {
+        if let itemForStaple = self.allItems?[indexPath.row] {
+            
+            do {
+                try self.realm.write {
+                    itemForStaple.newlyAddedItem = false
+                    itemForStaple.staple = true
+                }
+            } catch {
+                print("Error making staple, \(error)")
             }
         }
     }
